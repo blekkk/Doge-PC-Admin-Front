@@ -1,0 +1,31 @@
+.sidebar-open {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  min-height: 100%;
+  position: absolute;
+  left: 0;
+  color: #fff;
+  opacity: 1;
+  transition: 1s;
+}
+
+.sidebar-closed {
+  display: flex;
+  flex-direction: column;
+  width: 0rem;
+  min-height: 100%;
+  position: absolute;
+  left: 0;
+  color: #fff;
+  opacity: 0;
+}
+
+.sidebar-item {
+  margin-left: 2rem;
+}
+
+.focus {
+  color: #8cd2d5;
+  text-decoration: underline;
+}

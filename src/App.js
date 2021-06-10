@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Header from './components/header/header';
+import Main from './components/main/main';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
 
-function App() {
+const App = () => {
+  const [menuFlag, setMenuFlag] = useState(false);
+
+  const handleSetMenuFlag = () => { setMenuFlag(!menuFlag) };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Header setMenuFlag={handleSetMenuFlag} />
+        <Main menuFlag={menuFlag} />
+      </Router>
     </div>
   );
 }
