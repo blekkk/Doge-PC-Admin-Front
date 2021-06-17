@@ -1,0 +1,9 @@
+.row-action {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-action input[type=button] {
+  margin: 6px 0;
+  padding: 6px 12px;
+}

@@ -2,3 +2,7 @@ a {
   text-decoration: none;
   color: #fff;
 }
+
+input[type=button] {
+  cursor: pointer;
+}
