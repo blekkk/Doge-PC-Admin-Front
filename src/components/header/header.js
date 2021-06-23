@@ -3,10 +3,23 @@ import { IoMenu } from "react-icons/io5";
 import {
   Link,
 } from "react-router-dom";
-
-const sampleName = "Sultan Salman";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Header = (props) => {
+
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/admin', {
+      headers: {
+        'auth-token': sessionStorage.getItem('auth-token')
+      }
+    }).then((res) =>
+      setUser(res.data)
+    ).catch(e => console.log(e.message));
+  }, []);
+
   return (
     <header>
       <div className="header-wrapper">
@@ -23,7 +36,7 @@ const Header = (props) => {
           <h2>Admin Console</h2>
         </nav>
         <nav>
-          <h2>Hello, {sampleName}</h2>
+          <h2>Hello, {user.name} </h2>
         </nav>
       </div>
     </header>

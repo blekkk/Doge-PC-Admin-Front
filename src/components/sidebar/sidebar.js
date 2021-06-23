@@ -4,8 +4,12 @@ import {
   NavLink,
 } from "react-router-dom";
 
+const handleLogout = () => {
+  sessionStorage.removeItem('auth-token');
+  window.location.reload();
+}
+
 const Sidebar = (props) => {
-  console.log(window.location.pathname);
   return (
     <div className={props.menuFlag ? 'sidebar-open' : 'sidebar-closed'}>
       <NavLink to='/product' className='sidebar-item' activeClassName='sidebar-item focus'>
@@ -20,6 +24,9 @@ const Sidebar = (props) => {
       <NavLink to='/shipmentuct' className='sidebar-item' activeClassName='sidebar-item focus'>
         <h2>Shipment</h2>
       </NavLink>
+      <div className='sidebar-item logout'>
+        <h2 onClick={handleLogout}>Logout</h2>
+      </div>
     </div>
   )
 };

@@ -15,8 +15,6 @@ const Product = (props) => {
       .catch((e) => console.log(e.message));
   }, []);
 
-  console.log(result);
-
   return (
     <div className={props.menuFlag ? 'main-content-sidebar' : 'main-content-full'}>
       <div className='main-content-wrapper'>

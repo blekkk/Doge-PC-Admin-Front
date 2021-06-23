@@ -29,3 +29,12 @@
   color: #8cd2d5;
   text-decoration: underline;
 }
+
+.logout>h2 {
+  color: red;
+  cursor: pointer;
+}
+
+.logout>h2:hover {
+  text-decoration: underline;
+}

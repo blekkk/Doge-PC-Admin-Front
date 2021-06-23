@@ -1,0 +1,45 @@
+.login-component {
+  height: 100vh;
+}
+
+.login {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-wrapper {
+  min-width: 20rem;
+  max-width: 20rem;
+  background: rgb(245, 241, 241);
+  padding: 2rem;
+  border-radius: 4px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 15rem;
+}
+
+form>div>label {
+  display: block;
+} 
+
+form>div>input {
+  width: 100%;
+}
+
+.login-error, .login h1 {
+  text-align: center;
+}
+
+.login-error {
+  color: red;
+}
