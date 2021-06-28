@@ -9,7 +9,7 @@
 .fixedHeaderTable thead th {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 0;
   background-color:#676d72;
   color: #ffffff;
   text-align: center;

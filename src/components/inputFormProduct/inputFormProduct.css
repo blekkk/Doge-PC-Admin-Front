@@ -1,0 +1,62 @@
+.modal {
+  min-height: 90%;
+  width: 75%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  box-shadow: 0 0 10px #ccc;
+  overflow-y: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.637);
+}
+
+.modal-form {
+  width: 50%;
+}
+
+.modal-form input {
+  height: 2rem;
+  padding: 0 6px;
+}
+
+.modal-form select {
+  height: 2rem;
+  min-width: 15rem;
+  padding: 0 6px;
+}
+
+button {
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.error-msg, .close-btn:hover {
+  color: red;
+}
+
+form>div {
+  margin: 8px 0;
+}

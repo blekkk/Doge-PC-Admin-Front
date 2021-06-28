@@ -22,7 +22,12 @@
 }
 
 .sidebar-item {
+  display: flex;
   margin-left: 2rem;
+}
+
+.sidebar-item h2 {
+  margin-left: 6px;
 }
 
 .focus {
@@ -31,10 +36,10 @@
 }
 
 .logout>h2 {
-  color: red;
   cursor: pointer;
 }
 
-.logout>h2:hover {
+.logout:hover {
   text-decoration: underline;
+  color: rgb(255, 0, 0);
 }

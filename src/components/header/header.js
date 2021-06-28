@@ -13,7 +13,7 @@ const Header = (props) => {
   useEffect(() => {
     axios.get('http://localhost:8080/admin', {
       headers: {
-        'auth-token': sessionStorage.getItem('auth-token')
+        'auth-token': localStorage.getItem('auth-token')
       }
     }).then((res) =>
       setUser(res.data)
