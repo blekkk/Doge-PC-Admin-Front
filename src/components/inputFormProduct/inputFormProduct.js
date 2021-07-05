@@ -5,7 +5,7 @@ import { Formik, Form, Field, useFormikContext, ErrorMessage} from 'formik';
 import { brandCPU, brandVGA, brandMotherboard, brandDrive, brandPSU, brandRAM } from '../brandAndCategory/brandAndCategory';
 
 const InputFormProduct = (props) => {
-  const { modalOpen, modalClose, submitFunction, setTableChange, tableChange, title, data, id} = props;
+  const { modalOpen, modalClose, submitFunction, setTableChange, tableChange, title, data, id } = props;
   const [buttonText, setButtonText] = useState(title);
 
   const BrandsField = (props) => {
@@ -18,7 +18,7 @@ const InputFormProduct = (props) => {
 
     useEffect(() => {
       switch (main_category) {
-        case 'CPU':
+        case 'Processor':
           setBrands(brandCPU)
           break;
         case 'VGA':
@@ -81,19 +81,7 @@ const InputFormProduct = (props) => {
         }}
         onSubmit={async (values, { setSubmitting }) => {
           const product = {
-            product_name: values.product_name,
-            price: values.price,
-            discount_price: values.discount_price,
-            weight:values.weight,
-            stock: values.stock,
-            category: {
-              main_category: values.main_category,
-              secondary_category: values.secondary_category,
-            },
-            brand: values.brand,
-            average_rating: 0,
-            product_picture: "",
-            sold_number: 0
+            ...values
           };
           try {
             await submitFunction(product, id);
@@ -136,7 +124,7 @@ const InputFormProduct = (props) => {
               <label htmlFor="main_category">Category</label>
               <Field as="select" name="main_category" required>
                 <option value="">Select a Category</option>
-                <option value="CPU">CPU</option>
+                <option value="Processor">Processor</option>
                 <option value="VGA">VGA</option>
                 <option value="Motherboard">Motherboard</option>
                 <option value="Drive">Drive</option>

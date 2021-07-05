@@ -11,7 +11,7 @@
 }
 
 .sidebar-closed {
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 0rem;
   min-height: 100%;
