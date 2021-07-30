@@ -1,56 +1,56 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 import { IoClose } from "react-icons/io5";
 import { Formik, Form, Field, useFormikContext, ErrorMessage} from 'formik';
-import { brandCPU, brandVGA, brandMotherboard, brandDrive, brandPSU, brandRAM } from '../brandAndCategory/brandAndCategory';
+//import { brandCPU, brandVGA, brandMotherboard, brandDrive, brandPSU, brandRAM } from '../brandAndCategory/brandAndCategory';
 
 const InputFormProduct = (props) => {
   const { modalOpen, modalClose, submitFunction, setTableChange, tableChange, title, data, id } = props;
   const [buttonText, setButtonText] = useState(title);
 
-  const BrandsField = (props) => {
-    const {
-      values: { main_category },
-      touched,
-      setFieldValue,
-    } = useFormikContext();
-    const [brands, setBrands] = useState([]);
+  // const BrandsField = (props) => {
+  //   const {
+  //     values: { main_category },
+  //     touched,
+  //     setFieldValue,
+  //   } = useFormikContext();
+  //   const [brands, setBrands] = useState([]);
 
-    useEffect(() => {
-      switch (main_category) {
-        case 'Processor':
-          setBrands(brandCPU)
-          break;
-        case 'VGA':
-          setBrands(brandVGA)
-          break;
-        case 'Motherboard':
-          setBrands(brandMotherboard)
-          break;
-        case 'RAM':
-          setBrands(brandRAM)
-          break;
-        case 'Drive':
-          setBrands(brandDrive)
-          break;
-        case 'PSU':
-          setBrands(brandPSU)
-          break;
-        default:
-          setBrands([])
-          break;
-      }
-    }, [main_category, touched.main_category, setFieldValue]);
+  //   useEffect(() => {
+  //     switch (main_category) {
+  //       case 'Processor':
+  //         setBrands(brandCPU)
+  //         break;
+  //       case 'VGA':
+  //         setBrands(brandVGA)
+  //         break;
+  //       case 'Motherboard':
+  //         setBrands(brandMotherboard)
+  //         break;
+  //       case 'RAM':
+  //         setBrands(brandRAM)
+  //         break;
+  //       case 'Drive':
+  //         setBrands(brandDrive)
+  //         break;
+  //       case 'PSU':
+  //         setBrands(brandPSU)
+  //         break;
+  //       default:
+  //         setBrands([])
+  //         break;
+  //     }
+  //   }, [main_category, touched.main_category, setFieldValue]);
 
-    return (
-      <Field as="select" name="brand" required>
-        <option value="">Select a Brand</option>
-        {brands.map(r => (
-          <option value={r}>{r}</option>
-        ))}
-      </Field>
-    );
-  };
+  //   return (
+  //     <Field as="select" name="brand" required>
+  //       <option value="">Select a Brand</option>
+  //       {brands.map(r => (
+  //         <option value={r}>{r}</option>
+  //       ))}
+  //     </Field>
+  //   );
+  // };
 
   return (
     <Modal
@@ -67,8 +67,8 @@ const InputFormProduct = (props) => {
           discount_price: data?.dicount_price || 0,
           weight: data?.weight || null,
           stock: data?.stock || null,
-          main_category: data?.main_category || '',
-          secondary_category: data?.secondary_category || '',
+          main_category: data?.category?.main_category || '',
+          secondary_category: data?.category?.secondary_category || '',
           brand: data?.brand || '',
           requiredError: '',
         }}
@@ -100,41 +100,47 @@ const InputFormProduct = (props) => {
         {({ isSubmitting }) => (
           <Form className="modal-form">
             <div>
-              <label htmlFor="product_name">Product Name</label>
+              <label htmlFor="product_name">Product Name <span style={{color:"red"}}>*</span></label>
               <Field type="text" name="product_name" required />
             </div>
             <div>
-              <label htmlFor="price">Price</label>
+              <label htmlFor="price">Price <span style={{color:"red"}}>*</span></label>
               <Field type="number" name="price" required />
             </div>
             <div>
-              <label htmlFor="discount_price">Discount Price</label>
+              <label htmlFor="discount_price">Discount Price <span style={{color:"red"}}>*</span></label>
               <Field type="number" name="discount_price" />
               <ErrorMessage name="discount_price" component="div" className="error-msg"/>
             </div>
             <div>
-              <label htmlFor="weight">Weight</label>
+              <label htmlFor="weight">Weight <span style={{color:"red"}}>*</span></label>
               <Field type="number" name="weight" required />
             </div>
             <div>
-              <label htmlFor="stock">Stock</label>
+              <label htmlFor="stock">Stock <span style={{color:"red"}}>*</span></label>
               <Field type="number" name="stock" required />
             </div>
             <div>
-              <label htmlFor="main_category">Category</label>
+              <label htmlFor="brand">Brand <span style={{color:"red"}}>*</span></label>
+              <Field type="text" name="brand" required />
+              {/* <BrandsField /> */}
+            </div>
+            <div>
+              <label htmlFor="main_category">Category <span style={{color:"red"}}>*</span></label>
               <Field as="select" name="main_category" required>
                 <option value="">Select a Category</option>
                 <option value="Processor">Processor</option>
-                <option value="VGA">VGA</option>
+                <option value="GPU">GPU</option>
                 <option value="Motherboard">Motherboard</option>
-                <option value="Drive">Drive</option>
+                <option value="Storage">Storage</option>
                 <option value="RAM">RAM</option>
                 <option value="PSU">PSU</option>
               </Field>
             </div>
             <div>
-              <label htmlFor="brand">Brand</label>
-              <BrandsField />
+              <label htmlFor="secondary_category">Secondary Category</label>
+              <Field type="text" name="secondary_category" />
+              {/* <BrandsField /> */}
             </div>
             <button type="submit" disabled={isSubmitting} className="main-button">
               {buttonText}

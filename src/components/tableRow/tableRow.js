@@ -14,7 +14,7 @@ const loopObj = (objs) => {
       result.push(<td>{objs[obj]}</td>);
   }
   return result;
-}
+} 
 
 const deleteRow = (id) => {
   axios.delete(`http://localhost:8080/product/${id}`)

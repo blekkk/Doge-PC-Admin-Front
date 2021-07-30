@@ -14,12 +14,13 @@ const Product = (props) => {
   const [result, setResult] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [tableChange, setTableChange] = useState(0);
+  const [category, setCategory] = useState('Processor');
 
   useEffect(() => {
-    axios.get('http://localhost:8080/products')
+    axios.get(`http://localhost:8080/products/${category}`)
       .then((res) => setResult(res.data))
       .catch((e) => console.log(e.message));
-  }, [tableChange]);
+  }, [tableChange, category]);
 
   const openModal = () => {
     setModalOpen(true);
@@ -29,10 +30,23 @@ const Product = (props) => {
     setModalOpen(false);
   }
 
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  }
+
   return (
     <div className={props.menuFlag ? 'main-content-sidebar' : 'main-content-full'}>
       <div className='main-content-wrapper'>
         <h2>PRODUCT PAGE</h2>
+        <label htmlFor="category">Category</label>
+        <select name="category" onChange={(e) => handleCategoryChange(e)}>
+          <option value="Processor">Processor</option>
+          <option value="GPU">GPU</option>
+          <option value="Motherboard">Motherboard</option>
+          <option value="Storage">Storage</option>
+          <option value="RAM">RAM</option>
+          <option value="PSU">PSU</option>
+        </select>
         <div className="fixedHeaderTable">
           <table className="styled-table">
             <thead>
@@ -75,7 +89,7 @@ const Product = (props) => {
           </table>
         </div>
         <input type="button" value="Add Product" className="main-button" onClick={openModal} />
-        <InputFormProduct 
+        <InputFormProduct
           modalOpen={modalOpen}
           modalClose={closeModal}
           submitFunction={addProductPost}
