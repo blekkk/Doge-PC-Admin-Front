@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import "./tableRow.css"
-import InputFormProduct from '../inputFormProduct/inputFormProduct';
+import "./tableRowProduct.css"
+import InputFormProduct from '../../inputFormProduct/inputFormProduct';
 
 const addProductPost = async (product, id) => {
   return await axios.put(`http://localhost:8080/product/${id}`, product);
@@ -21,7 +21,7 @@ const deleteRow = (id) => {
     .catch((e) => console.log(e.message));
 }
 
-const TableRow = (props) => {
+const TableRowProduct = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [result, setResult] = useState([]);
   const { setTableChange, tableChange, id } = props;
@@ -61,4 +61,4 @@ const TableRow = (props) => {
   )
 }
 
-export default TableRow
+export default TableRowProduct

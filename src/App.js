@@ -24,7 +24,7 @@ const App = () => {
     <div className="App">
       <Router>
         <Header setMenuFlag={handleSetMenuFlag} />
-        <Main menuFlag={menuFlag} />
+        <Main token={token} menuFlag={menuFlag} />
       </Router>
     </div>
   );

@@ -3,7 +3,7 @@ import "./product.css";
 import "../main/main.css";
 import "../inputFormProduct/inputFormProduct.css"
 import axios from 'axios';
-import TableRow from '../tableRow/tableRow';
+import TableRowProduct from './tableRowProduct/tableRowProduct';
 import InputFormProduct from '../inputFormProduct/inputFormProduct';
 
 const addProductPost = async (product) => {
@@ -67,7 +67,7 @@ const Product = (props) => {
             <tbody>
               {result.map((obj) => {
                 return (
-                  <TableRow
+                  <TableRowProduct
                     key={obj._id}
                     id={obj._id}
                     product_name={obj.product_name}
