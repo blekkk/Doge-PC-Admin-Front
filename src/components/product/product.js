@@ -6,21 +6,27 @@ import axios from 'axios';
 import TableRowProduct from './tableRowProduct/tableRowProduct';
 import InputFormProduct from '../inputFormProduct/inputFormProduct';
 
-const addProductPost = async (product) => {
-  return await axios.post('http://localhost:8080/products', product);
-}
 
 const Product = (props) => {
+  const { token } = props;
   const [result, setResult] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [tableChange, setTableChange] = useState(0);
   const [category, setCategory] = useState('Processor');
-
+  
   useEffect(() => {
     axios.get(`http://localhost:8080/products/${category}`)
-      .then((res) => setResult(res.data))
-      .catch((e) => console.log(e.message));
+    .then((res) => setResult(res.data))
+    .catch((e) => console.log(e.message));
   }, [tableChange, category]);
+  
+  const addProductPost = async (product) => {
+    return await axios.post('http://localhost:8080/products', product, {
+      headers: {
+        'auth-token': token
+      }
+    });
+  }
 
   const openModal = () => {
     setModalOpen(true);
@@ -82,6 +88,7 @@ const Product = (props) => {
                     discount_price={obj.discount_price}
                     tableChange={tableChange}
                     setTableChange={setTableChange}
+                    token={token}
                   />
                 )
               })}

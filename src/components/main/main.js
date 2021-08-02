@@ -3,6 +3,7 @@ import Sidebar from '../sidebar/sidebar';
 import Product from '../product/product';
 import Dashboard from '../dashboard/dashboard';
 import User from "../user/user";
+import Transaction from "../transaction/transaction";
 import {
   Switch,
   Route,
@@ -15,10 +16,13 @@ const Main = (props) => {
       <Sidebar menuFlag={props.menuFlag} />
       <Switch>
         <Route path='/product'>
-          <Product menuFlag={props.menuFlag} />
+          <Product token={token} menuFlag={props.menuFlag} />
         </Route>
         <Route path='/user'>
           <User token={token} menuFlag={props.menuFlag} />
+        </Route>
+        <Route path='/transaction'>
+          <Transaction token={token} menuFlag={props.menuFlag} />
         </Route>
         <Route path='/'>
           <Dashboard menuFlag={props.menuFlag} />

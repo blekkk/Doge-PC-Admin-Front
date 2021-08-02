@@ -3,7 +3,7 @@ import "./sidebar.css";
 import {
   NavLink,
 } from "react-router-dom";
-import { IoAirplane, IoBagHandle, IoCard, IoLogOut, IoLogOutOutline, IoPersonCircle } from 'react-icons/io5';
+import { IoBagHandle, IoCard, IoLogOutOutline, IoPersonCircle } from 'react-icons/io5';
 
 const handleLogout = () => {
   localStorage.removeItem('auth-token');
@@ -24,10 +24,6 @@ const Sidebar = (props) => {
       <NavLink to='/transaction' className='sidebar-item' activeClassName='sidebar-item focus'>
         <h2><IoCard /></h2>
         <h2>Transaction</h2>
-      </NavLink>
-      <NavLink to='/shipmentuct' className='sidebar-item' activeClassName='sidebar-item focus'>
-        <h2><IoAirplane /></h2>
-        <h2>Shipment</h2>
       </NavLink>
       <div className='sidebar-item logout'>
         <h2><IoLogOutOutline /></h2>

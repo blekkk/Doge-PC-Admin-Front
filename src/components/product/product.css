@@ -39,3 +39,8 @@
 .styled-table tbody tr:last-of-type {
   border-bottom: 2px solid #676d72;
 }
+
+.table-item-icon {
+  font-size: 2rem;
+  text-align: center;
+}

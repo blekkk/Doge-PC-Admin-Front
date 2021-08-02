@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './login.css';
 import '../header/header.css';
 import axios from 'axios';
+import { withRouter } from 'react-router';
 
 const adminLogin = async (credentials) => {
   return await axios.post('http://localhost:8080/admin/login', credentials);
@@ -92,4 +93,4 @@ Login.propTypes = {
   setToken: PropTypes.func.isRequired
 }
 
-export default Login
+export default withRouter(Login)

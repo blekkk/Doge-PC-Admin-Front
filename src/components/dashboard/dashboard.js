@@ -6,7 +6,7 @@ const Dashboard = (props) => {
   return (
     <div className={props.menuFlag ? 'main-content-sidebar' : 'main-content-full'}>
       <div className='main-content-wrapper'>
-        <h2>WELCOME</h2>
+        <h2>WELCOME TO ADMIN CONSOLE</h2>
       </div>
     </div>
   )

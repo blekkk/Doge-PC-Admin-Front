@@ -3,35 +3,44 @@ import axios from "axios";
 import "./tableRowProduct.css"
 import InputFormProduct from '../../inputFormProduct/inputFormProduct';
 
-const addProductPost = async (product, id) => {
-  return await axios.put(`http://localhost:8080/product/${id}`, product);
-}
-
 const loopObj = (objs) => {
   let result = [];
   for (let obj in objs) {
-    if (obj !== 'id' && obj !== 'setTableChange' && obj !== 'tableChange')
-      result.push(<td>{objs[obj]}</td>);
+    if (obj !== 'id' && obj !== 'setTableChange' && obj !== 'tableChange' && obj !== 'token')
+    result.push(<td>{objs[obj]}</td>);
   }
   return result;
 } 
 
-const deleteRow = (id) => {
-  axios.delete(`http://localhost:8080/product/${id}`)
-    .catch((e) => console.log(e.message));
-}
-
 const TableRowProduct = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [result, setResult] = useState([]);
-  const { setTableChange, tableChange, id } = props;
-
+  const { setTableChange, tableChange, id, token } = props;
+  
   useEffect(() => {
     axios.get(`http://localhost:8080/product/${id}`)
-      .then((res) => setResult(res.data))
-      .catch((e) => console.log(e.message));
+    .then((res) => setResult(res.data))
+    .catch((e) => console.log(e.message));
   }, [tableChange]);
+  
+  
+  const addProductPost = async (product, id) => {
+    return await axios.put(`http://localhost:8080/product/${id}`, product, {
+      headers: {
+        'auth-token': token
+      }
+    });
+  }
 
+  const deleteRow = (id) => {
+    axios.delete(`http://localhost:8080/product/${id}`, {
+      headers: {
+        'auth-token': token
+      }
+    })
+    .catch((e) => console.log(e.message));
+  }
+  
   const openModal = () => {
     setModalOpen(true);
   }
