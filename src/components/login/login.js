@@ -93,4 +93,4 @@ Login.propTypes = {
   setToken: PropTypes.func.isRequired
 }
 
-export default withRouter(Login)
+export default Login
